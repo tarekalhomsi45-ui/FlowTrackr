@@ -7,33 +7,27 @@
     --accent-purple: #9d7cff;
     --text-main: #ffffff;
     --text-dim: #a0a0a0;
-    --sidebar-active: #f5f3ff;
-    --sidebar-active-text: #7c3aed;
     
-    /* Exact card colors from your screenshots */
-    --card-red-gradient: linear-gradient(145deg, #2a1a24 0%, #161616 100%);
-    --card-orange-gradient: linear-gradient(145deg, #2a2216 0%, #161616 100%);
-    --banner-purple: #231934;
+    /* Exact colors from your screenshots */
+    --active-bg: #f5f3ff;
+    --active-text: #7c3aed;
+    --card-red: linear-gradient(145deg, #2a1a24 0%, #161616 100%);
+    --card-orange: linear-gradient(145deg, #2a2216 0%, #161616 100%);
+    --quote-bg: #231934;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Inter', sans-serif; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
 body { 
     background-color: var(--bg-dark); 
     color: var(--text-main); 
     display: flex; 
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* --- SIDEBAR (Left) --- */
+/* --- SIDEBAR --- */
 nav {
-    width: 280px; /* Wider sidebar like your pic */
+    width: 280px;
     background-color: var(--sidebar-bg);
     padding: 2.5rem 1.2rem;
     height: 100vh;
@@ -47,71 +41,44 @@ nav {
 .logo-area h1 { 
     font-size: 1.8rem; 
     font-weight: 800; 
-    letter-spacing: -1.5px;
-    margin-bottom: 2.5rem;
+    letter-spacing: -1.5px; 
+    margin-bottom: 2.5rem; 
     padding-left: 10px;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     padding: 14px 18px;
+    margin-bottom: 6px;
     border-radius: 14px;
     color: var(--text-dim);
     text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
-    transition: 0.2s ease;
+    transition: 0.2s;
 }
 
-.nav-item i { 
-    margin-right: 15px; 
-    width: 20px; 
-    text-align: center;
-    font-size: 1.1rem;
-}
+.nav-item i { margin-right: 15px; width: 20px; text-align: center; font-size: 1.1rem; }
 
-/* ACTIVE STATE - Light purple bg, purple text */
+/* THE PURPLE ACTIVE BOX */
 .nav-item.active {
-    background-color: var(--sidebar-active);
-    color: var(--sidebar-active-text);
+    background-color: var(--active-bg);
+    color: var(--active-text);
     font-weight: 700;
 }
 
-.nav-item:hover:not(.active) {
-    background-color: #222;
-    color: white;
-}
-
-/* --- MAIN CONTENT (Right) --- */
+/* --- MAIN CONTENT --- */
 main {
     flex: 1;
     padding: 4rem 5rem;
-    max-width: 1300px;
+    max-width: 1400px;
 }
 
-.greeting-title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 0.5rem;
-}
+.greeting-title { font-size: 3rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 0.5rem; }
+.sub-text { color: var(--text-dim); margin-bottom: 2.5rem; font-size: 1.1rem; }
 
-.sub-text {
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-}
-
-/* Quote Banner */
 .quote-banner {
-    background: var(--banner-purple);
+    background: var(--quote-bg);
     padding: 1.5rem 2rem;
     border-radius: 20px;
     border: 1px solid #3d2b5d;
@@ -121,46 +88,27 @@ main {
     margin-bottom: 2.5rem;
 }
 
-.quote-banner p {
-    color: #e0d5ff;
-    font-style: italic;
-    font-size: 1rem;
-}
-
-/* Stats Cards */
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin-bottom: 3rem;
-}
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
 .stat-card {
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 2.5rem;
     border-radius: 28px;
-    position: relative;
     border: 1px solid rgba(255,255,255,0.05);
 }
 
-.stat-card.tasks { background: var(--card-red-gradient); border-color: #3d2434; }
-.stat-card.homework { background: var(--card-orange-gradient); border-color: #3d301d; }
+.stat-card.tasks { background: var(--card-red); border-color: #3d2434; }
+.stat-card.homework { background: var(--card-orange); border-color: #3d301d; }
 
-.stat-card .count {
-    font-size: 4rem;
-    font-weight: 800;
-    display: block;
-    line-height: 1;
-    margin-bottom: 10px;
-}
+.stat-card .count { font-size: 4.5rem; font-weight: 800; display: block; line-height: 1; margin-bottom: 8px; }
+.stat-card .label { color: var(--text-dim); font-size: 1.1rem; font-weight: 500; }
 
-.stat-card .label {
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.stat-card i {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    display: block;
+/* Buttons */
+.btn-plus {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
 }
