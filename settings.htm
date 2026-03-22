@@ -5,47 +5,69 @@
     <title>FlowTrackr | Settings</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .settings-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 30px; margin-bottom: 25px; }
+        .input-box { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 12px 16px; border-radius: 12px; color: white; margin-top: 8px; margin-bottom: 20px; font-size: 1rem; }
+        .save-btn { background: var(--accent); color: black; border: none; padding: 14px 30px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        .save-btn:hover { transform: scale(1.02); background: #b094ff; }
+    </style>
 </head>
 <body>
     <nav>
-        <div class="logo-area"><h1>FlowTrackr</h1></div>
+        <div class="logo-container"><h1>FlowTrackr</h1></div>
         <div class="nav-links">
             <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="tasks.html" class="nav-item"><i class="fa-solid fa-list-check"></i> Tasks</a>
+            <a href="homework.html" class="nav-item"><i class="fa-solid fa-book"></i> Homework</a>
             <a href="settings.html" class="nav-item active"><i class="fa-solid fa-gear"></i> Settings</a>
         </div>
     </nav>
+
     <main>
-        <h2>Settings</h2>
-        <div class="tab-container" style="margin: 20px 0;">
-            <div class="tab active">Account</div>
-            <div class="tab">Themes</div>
-            <div class="tab">What's New</div>
+        <header>
+            <h2>Settings</h2>
+            <p>Personalize your experience</p>
+        </header>
+
+        <div class="settings-group">
+            <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-user" style="margin-right: 10px; color: var(--accent);"></i> Profile</h3>
+            
+            <label style="font-size: 0.9rem; color: var(--text-dim);">Display Name</label>
+            <input type="text" id="usernameInput" class="input-box" placeholder="e.g. Tarek">
+
+            <label style="font-size: 0.9rem; color: var(--text-dim);">DeepSeek API Key</label>
+            <input type="password" id="apiKeyInput" class="input-box" placeholder="sk-...">
+            
+            <button class="save-btn" onclick="saveSettings()">Save Changes</button>
+            <p id="saveMessage" style="color: #00c896; font-size: 0.9rem; margin-top: 15px; display: none;">✅ Settings saved successfully!</p>
         </div>
 
-        <div class="account-card">
-            <div class="avatar" id="avatar-letter">T</div>
-            <div>
-                <h3 id="set-name">User Name</h3>
-                <p id="set-email" style="color:var(--text-dim)">user@email.com</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 30px;">
-            <button class="auth-btn" style="background: #252525; color: white; margin-bottom: 10px;">Update Profile</button>
-            <button class="auth-btn" style="background: #3a1a1a; color: #ff4d6d;" onclick="deleteAccount()">Delete Account</button>
+        <div class="settings-group" style="opacity: 0.6;">
+            <h3>Appearance</h3>
+            <p style="color: var(--text-dim); margin-top: 10px;">Theme: <strong>Dark Mode (FlowTrackr Purple)</strong></p>
+            <button disabled style="margin-top: 15px; background: none; border: 1px solid var(--border); color: var(--text-dim); padding: 8px 16px; border-radius: 10px;">Coming Soon: Light Mode</button>
         </div>
     </main>
 
     <script>
-        document.getElementById('set-name').innerText = localStorage.getItem('userName') || "User";
-        document.getElementById('set-email').innerText = localStorage.getItem('userEmail') || "No email found";
-        document.getElementById('avatar-letter').innerText = (localStorage.getItem('userName') || "U").charAt(0);
+        // Load current settings when page opens
+        window.onload = function() {
+            const savedName = localStorage.getItem('flowtrackr_user') || "Tarek";
+            const savedKey = localStorage.getItem('flowtrackr_ai_key') || "";
+            document.getElementById('usernameInput').value = savedName;
+            document.getElementById('apiKeyInput').value = savedKey;
+        };
 
-        function deleteAccount() {
-            if(confirm("Are you sure? This will delete all your data.")) {
-                localStorage.clear();
-                window.location.href = "index.html";
-            }
+        function saveSettings() {
+            const newName = document.getElementById('usernameInput').value;
+            const newKey = document.getElementById('apiKeyInput').value;
+
+            localStorage.setItem('flowtrackr_user', newName);
+            localStorage.setItem('flowtrackr_ai_key', newKey);
+
+            const msg = document.getElementById('saveMessage');
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 3000);
         }
     </script>
 </body>
