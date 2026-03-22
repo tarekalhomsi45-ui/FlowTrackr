@@ -1,0 +1,34 @@
+:root {
+    --bg-dark: #0f0f0f;
+    --sidebar-bg: #161616;
+    --card-bg: #1c1c1c;
+    --accent-purple: #9d7cff;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --quote-bg: #2d1b4d;
+    --danger: #ff4d6d;
+    --warning: #ffb703;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-dark); color: var(--text-main); display: flex; min-height: 100vh; }
+
+/* Sidebar stays the same for all pages */
+nav {
+    width: 260px; background-color: var(--sidebar-bg); padding: 2rem 1rem;
+    display: flex; flex-direction: column; border-right: 1px solid #222; height: 100vh; position: sticky; top: 0;
+}
+.nav-item { display: flex; align-items: center; padding: 12px 15px; margin-bottom: 8px; border-radius: 12px; color: var(--text-dim); text-decoration: none; }
+.nav-item.active { background-color: #f5f3ff; color: #7c3aed; }
+.nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+
+/* Main Content */
+main { flex: 1; padding: 3rem; }
+.stat-card { background: linear-gradient(145deg, #2a1a24, #1c1c1c); padding: 2.5rem; border-radius: 24px; margin-bottom: 1rem; }
+.stat-card.homework { background: linear-gradient(145deg, #2a2216, #1c1c1c); }
+
+/* Login specific */
+.auth-body { justify-content: center; align-items: center; }
+.auth-card { background: var(--sidebar-bg); padding: 3rem; border-radius: 24px; width: 400px; border: 1px solid #333; text-align: center; }
+.auth-input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid #333; background: #0f0f0f; color: white; outline: none; }
+.auth-btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: var(--accent-purple); color: white; font-weight: 600; cursor: pointer; }
