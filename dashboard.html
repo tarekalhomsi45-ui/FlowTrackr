@@ -13,7 +13,7 @@
         <div class="nav-links">
             <a href="dashboard.html" class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
             <a href="tasks.html" class="nav-item"><i class="fa-solid fa-list-ul"></i> Tasks</a>
-            <a href="homework.html" class="nav-item"><i class="fa-solid fa-book"></i> Homework</a>
+            <a href="homework.html" class="nav-item"><i class="fa-solid fa-book-bookmark"></i> Homework</a>
             <a href="challenge.html" class="nav-item"><i class="fa-solid fa-mobile-screen"></i> Challenge</a>
             <a href="planner.html" class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Planner</a>
             <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
@@ -25,7 +25,7 @@
         <p class="sub-text">Here's your progress today</p>
 
         <div class="quote-banner">
-            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple); font-size: 1.2rem;"></i>
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i>
             <p style="color: #e0d5ff; font-style: italic;">"Success is built on daily habits, not once-in-a-lifetime effort."</p>
         </div>
 
@@ -42,26 +42,26 @@
             </div>
         </div>
 
-        <div style="margin-top: 4rem;">
-            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Quick Actions</h3>
-            <div style="display: flex; gap: 12px;">
-                <button class="btn-plus" style="background: #1c1c1c; border: 1px solid #333; color: white;">+ Add Task</button>
-                <button class="btn-plus" style="background: #1c1c1c; border: 1px solid #333; color: white;">+ Add Homework</button>
+        <div style="margin-top: 3rem;">
+            <h3 style="margin-bottom: 1.5rem;">Quick Actions</h3>
+            <div style="display: flex; gap: 15px;">
+                <button class="btn-action" onclick="window.location.href='planner.html'">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i> AI Plan
+                </button>
+                <button class="btn-action" onclick="window.location.href='challenge.html'">
+                    <i class="fa-solid fa-mobile-screen" style="color: #00c896;"></i> Focus
+                </button>
             </div>
         </div>
     </main>
 
     <script>
-        // Use the name from the Login/Google Auth
         const name = localStorage.getItem('userName') || "User";
-        
-        // Dynamic Time Greeting
         const hour = new Date().getHours();
-        let greetText = "Good morning";
-        if(hour >= 12 && hour < 17) greetText = "Good afternoon";
-        else if(hour >= 17) greetText = "Good evening";
-
-        document.getElementById('greet').innerText = `${greetText}, ${name} 👋`;
+        let greeting = "Good morning";
+        if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+        else if (hour >= 17) greeting = "Good evening";
+        document.getElementById('greet').innerText = `${greeting}, ${name} 👋`;
     </script>
 </body>
 </html>
