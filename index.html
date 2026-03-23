@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FlowTrackr | Login</title>
+    <title>FlowTrackr | Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="auth-body">
-    <div id="auth-overlay">
-        <div class="auth-card">
-            <h1>FlowTrackr</h1>
-            <p>Sign in to your account</p>
-            <input type="email" id="email" class="auth-input" placeholder="Email Address">
-            <input type="password" id="password" class="auth-input" placeholder="Password">
-            <button class="auth-btn" onclick="login()">Sign In</button>
+<body>
+    <nav>
+        <div class="logo"><h1>FlowTrackr</h1></div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="tasks.html" class="nav-link"><i class="fa-solid fa-list-check"></i> Tasks</a>
+            <a href="homework.html" class="nav-link"><i class="fa-solid fa-book"></i> Homework</a>
+            <a href="settings.html" class="nav-link"><i class="fa-solid fa-gear"></i> Settings</a>
         </div>
-    </div>
-
-    <script>
-        function login() {
-            const email = document.getElementById('email').value;
-            if(email.includes('@')) {
-                const name = email.split('@')[0];
-                const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-                
-                // Save name to browser memory
-                localStorage.setItem('userName', formattedName);
-                localStorage.setItem('userEmail', email);
-                
-                // Go to dashboard
-                window.location.href = "dashboard.html";
-            } else {
-                alert("Please enter a valid email");
-            }
-        }
-    </script>
+    </nav>
+    <main>
+        <h2>Good morning, Tarek Alhomsi 👋</h2>
+        <div class="quote-banner">
+            <p>"Success is built on daily habits."</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card card-tasks">
+                <i class="fa-solid fa-list-check" style="color: var(--accent-pink);"></i>
+                <h1 style="font-size: 3rem;">0</h1>
+                <p>Tasks Remaining</p>
+            </div>
+            <div class="stat-card card-homework">
+                <i class="fa-solid fa-book" style="color: var(--accent-orange);"></i>
+                <h1 style="font-size: 3rem;">2</h1>
+                <p>Homework Due</p>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
